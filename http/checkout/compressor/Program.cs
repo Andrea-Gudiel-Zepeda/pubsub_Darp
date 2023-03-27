@@ -15,7 +15,7 @@ app.MapGet("/dapr/subscribe", () => {
 
 // Dapr subscription in /dapr/subscribe sets up this route
 app.MapPost("/compress", (DaprData<Compress> requestData) => {
-    Console.WriteLine("Subscriber received : " + requestData.Data.OrderId);
+    Console.WriteLine("Subscriber received : " + requestData.Data.string_compress);
     return Results.Ok(requestData.Data);
 });
 

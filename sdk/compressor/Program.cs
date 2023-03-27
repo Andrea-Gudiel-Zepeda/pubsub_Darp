@@ -21,4 +21,4 @@ app.MapPost("/compress", [Topic("compresspubsub", "compress")] (Compress string_
 
 await app.RunAsync();
 
-public record Compres([property: JsonPropertyName("String_compress")] string string_compress);
+public record Compress([property: JsonPropertyName("String_compress")] string string_compress);

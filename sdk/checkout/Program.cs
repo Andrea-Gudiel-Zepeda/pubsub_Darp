@@ -2,6 +2,7 @@
 using Dapr.Client;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 string text = "SAM SAM";
 
@@ -11,8 +12,8 @@ List<byte> search_buffer = new List<byte>();
 
 foreach (var item in textochar)
 {
-    var bytes = convert.ToByte(item);
-    text_bytes.Add(item);
+    var bytes = Convert.ToByte(item);
+    text_bytes.Add(bytes);
 } 
 
 string texto_comprimido = "";
@@ -51,7 +52,7 @@ for(int i = 0; i<text_bytes.Count; i++)
 }
 
 // Publish an event/message using Dapr PubSub
-await client.PublishEventAsync("compresspubsub", "compress", texto_comprimido);
+object value = await DaprClient.PublishEventAsync("compresspubsub", "compress", texto_comprimido);
 Console.WriteLine("Published data: " + texto_comprimido);
 
 await Task.Delay(TimeSpan.FromSeconds(1));
